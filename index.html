@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Age Calculator</title>
+    <style>
+        .body {}
+
+        .app-container {
+            height: 300px;
+            width: 400px;
+            margin: 200px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 2px 10px #c3cfe2;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .input-label {
+            font-size: 20px;
+            margin-left: 20px;
+        }
+
+        .input {
+            font-size: 20px;
+            margin: 20px 10px 40px;
+
+        }
+
+        .input2 {
+            font-size: 20px;
+            margin: 20px 41px 40px;
+        }
+
+        .result-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px;
+
+        }
+
+        .Calculet-btn {
+            margin: 40px 140px;
+            width: 120px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #a9bad6;
+
+        }
+
+        .Calculet-btn:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 5px 1px #a9bad6;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <label for="cureentdate" class="input-label">Enter current Date :</label>
+        <input type="date" id="cureentdate" class="input">
+        </br>
+        <label for="olddate" class="input-label">Enter old Date :</label>
+        <input type="date" id="oldtdate" class="input2">
+        </br>
+        <span class="result-text" id="resulttext">Difference Between Two Dates :</span>
+        </br>
+        <button class="Calculet-btn" onClick="calDifference()">Calculet Age</button>
+    </div>
+
+
+    <script>
+        function calDifference() {
+            const currentDateInput = document.getElementById('cureentdate').value;
+            const currentDate = new Date(currentDateInput);
+
+            const oldDateInput = document.getElementById('oldtdate').value;
+            const oldDate = new Date(oldDateInput);
+
+            const difference = document.getElementById('resulttext');
+
+
+            let dateDiff = currentDate.getFullYear() - oldDate.getFullYear();
+            let monthDiff = currentDate.getMonth() - oldDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < oldDate.getDate())) {
+                dateDiff--;
+            }
+
+            difference.innerText = ` Difference Between Two Dates : ${dateDiff}`;
+        }
+    </script>
+
+</body>
+
+</html>
